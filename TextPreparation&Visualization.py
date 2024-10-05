@@ -1,12 +1,3 @@
-'''
-
-PROBLEM:
-Wikipedia metinleri içeren veri setine metin ön işleme ve görselleştirme yapınız.
-
-Proje Görevleri:
-
-'''
-
 import string
 from warnings import filterwarnings
 import nltk
@@ -16,9 +7,7 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from PIL.ImagePalette import random
 from nltk.corpus import stopwords, words
-from nltk.sentiment import SentimentIntensityAnalyzer
 from pandas import DataFrame
-
 from textblob import Word, TextBlob
 from wordcloud import WordCloud
 filterwarnings('ignore')
@@ -27,7 +16,7 @@ pd.set_option('display.width',200)
 pd.set_option('display.float_format',lambda x: '%.2f' % x)
 
 df = pd.read_csv("C:/Users/SALİH KARAYILAN/OneDrive/Desktop/wiki-221126-161428/wiki_data.csv")
-print('\nHAM DATASET :\n\n',df.head())
+print('\nRAW DATASET :\n\n',df.head())
 
 
 
@@ -35,10 +24,10 @@ print('\nHAM DATASET :\n\n',df.head())
 def clean_text(data, Barplot=False, Wordcloud=False):
 
     '''
-    :param data: DataFrame'deki textlerin olduğu değişken
-    :param Barplot: Barplot görselleştirme
-    :param Wordcloud: Wordcloud görselleştirme
-    :return: dat
+    param data: DataFrame'deki textlerin olduğu değişken
+    param Barplot: Barplot görselleştirme
+    param Wordcloud: Wordcloud görselleştirme
+    return: dat
     '''
     # Büyük küçük harf dönüşümü,
     data = data.str.lower()
@@ -46,11 +35,11 @@ def clean_text(data, Barplot=False, Wordcloud=False):
     #Noktalama işaretlerini çıkarma,
     data = data.str.replace(r'[^\w\s]', '', regex=True)
 
-    #Numerik ifadeleri çıkarma Işlemlerini gerçekleştirmeli.
+    #Numerik ifadeleri çıkarma işlemleri gerçekleştirildi.
     data = data.str.replace(r'\d', '',regex=True)
 
-    #Metin içinde öznitelik çıkarımı yaparken önemli olmayan kelimeleri çıkartılmalı.
-    #nltk.download('stopwords')
+    #Metin içinde öznitelik çıkarımı yaparken önemli olmayan kelimeleri çıkartıldı.
+    nltk.download('stopwords')
     sw = stopwords.words('english')
     data = data.apply(lambda x: " ".join(x for x in str(x).split() if x not in sw))
 
@@ -58,11 +47,11 @@ def clean_text(data, Barplot=False, Wordcloud=False):
     temp_df = pd.Series(' '.join(data).split()).value_counts()
     drops = temp_df[temp_df<2000]
     data = data.apply(lambda x: " ".join(x for x in str(x).split() if x not in drops))
-    #nltk.download("punkt_tab")
+    nltk.download("punkt_tab")
     print(data.apply(lambda x : TextBlob(x).words).head())
 
     #Lemmatization işlemi yapınız
-    #nltk.download('wordnet')
+    nltk.download('wordnet')
     data = data.apply(lambda x: " ".join([Word(word).lemmatize() for word in x.split()]))
 
 
@@ -70,7 +59,7 @@ def clean_text(data, Barplot=False, Wordcloud=False):
     Task 2: Veriyi Görselleştiriniz
         Step 1: Metindeki terimlerin frekanslarını hesaplayınız.
 
-        Step 2: Bir önceki Stepda bulduğunuz terim frekanslarının Barplot grafiğini oluşturunuz.
+        Step 2: Bir önceki adımda bulduğunuz terim frekanslarının Barplot grafiğini oluşturunuz.
 
         Step 3: Kelimeleri WordCloud ile görselleştiriniz.  
     '''
