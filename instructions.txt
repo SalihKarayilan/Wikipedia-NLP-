@@ -1,0 +1,36 @@
+PROBLEM:
+Wikipedia metinleri içeren veri setine metin ön işleme ve görselleştirme yapınız.
+
+Proje Görevleri:
+
+TASK 1. Metin Ön İşleme İşlemlerini Gerçekleştiriniz
+    Step 1: Metin ön işleme için clean_text adında fonksiyon oluşturunuz. Fonksiyon;
+        • Büyük küçük harf dönüşümü,
+        • Noktalama işaretlerini çıkarma,
+        • Numerik ifadeleri çıkarma Işlemlerini gerçekleştirmeli.
+
+    Step 2: Yazdığınız fonksiyonu veri seti içerisindeki tüm metinlere uygulayınız.
+
+    Step 3: Metin içinde öznitelik çıkarımı yaparken önemli olmayan kelimeleri çıkaracak remove_stopwords adında fonksiyon yazınız.
+
+    Step 4: Yazdığınız fonksiyonu veri seti içerisindeki tüm metinlere uygulayınız.
+
+    Step 5: Metinde az geçen (1000'den az, 2000'den az gibi) kelimeleri bulunuz. Ve bu kelimeleri metin içerisinden çıkartınız.
+
+    Step 6: Metinleri tokenize edip sonuçları gözlemleyiniz.
+
+    Step 7: Lemmatization işlemi yapınız
+
+Task 2: Veriyi Görselleştiriniz
+    Step 1: Metindeki terimlerin frekanslarını hesaplayınız.
+
+    Step 2: Bir önceki Stepda bulduğunuz terim frekanslarının Barplot grafiğini oluşturunuz.
+
+    Step 3: Kelimeleri WordCloud ile görselleştiriniz.
+
+Task 3: Tüm Aşamaları Tek Bir Fonksiyon Olarak Yazınız
+    Step 1: Metin ön işleme işlemlerini gerçekleştiriniz.
+
+    Step 2: Görselleştirme işlemlerini fonksiyona argüman olarak ekleyiniz.
+
+    Step 3: Fonksiyonu açıklayan 'docstring' yazınız.
